@@ -1,6 +1,6 @@
 <h1>Adding New Class</h1>
 
-<% form_for(@yoga_class) do |f| %>
+<% form_for(@yoga_class, :url => { :controller => 'yoga_classes', :action => "create" }) do |f| %>
   <%= f.error_messages %>
 
   <p>
