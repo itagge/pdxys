@@ -41,8 +41,9 @@
 <h2>Classes</h2>
 <% @studio.yoga_classes.each do |yoga_class| %>
 	<ul>
-		<li><%= yoga_class.name %></li>
-		<li><%= yoga_class.type_of %></li>
+		<li>Class Name: <%= yoga_class.name %></li>
+		<li>Class Type: <%= yoga_class.type_of %></li>
+		<li>Class Description: <%= yoga_class.description %></li>
 		<li><%= yoga_class.occurrences.map {|o| o.day} %></li>
 		<li><%= yoga_class.start_time %></li>
 		<li><%= yoga_class.end_time %></li>

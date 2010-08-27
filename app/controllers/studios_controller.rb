@@ -47,6 +47,11 @@ class StudiosController < ApplicationController
 
     respond_to do |format|
       if @studio.save
+        
+        # add studio to user
+        current_user.studio = @studio
+        current_user.save
+        
         flash[:notice] = 'Studio was successfully created.'
         format.html { redirect_to(@studio) }
         format.xml  { render :xml => @studio, :status => :created, :location => @studio }

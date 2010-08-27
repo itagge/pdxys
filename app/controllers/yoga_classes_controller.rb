@@ -28,7 +28,6 @@ class YogaClassesController < ApplicationController
   # GET /yoga_classes/new.xml
   def new
     @yoga_class = YogaClass.new
-    @yoga_class.studio = current_user.studio
     
     respond_to do |format|
       format.html # new.html.erb

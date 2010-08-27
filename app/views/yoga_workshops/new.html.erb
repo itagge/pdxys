@@ -1,6 +1,6 @@
 <h1>New Yoga Workshop</h1>
 
-<% form_for(@yoga_workshop) do |f| %>
+<% form_for(@yoga_workshop, :url => { :controller => 'yoga_workshops', :action => "create" }) do |f| %>
   <%= f.error_messages %>
 
   <p>

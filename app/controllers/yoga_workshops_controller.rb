@@ -49,7 +49,7 @@ class YogaWorkshopsController < ApplicationController
     respond_to do |format|
       if @yoga_workshop.save
         flash[:notice] = 'YogaWorkshop was successfully created.'
-        format.html { redirect_to(@yoga_workshop) }
+        format.html { redirect_to workshop_url(@yoga_workshop) }
         format.xml  { render :xml => @yoga_workshop, :status => :created, :location => @yoga_workshop }
       else
         format.html { render :action => "new" }
@@ -66,7 +66,7 @@ class YogaWorkshopsController < ApplicationController
     respond_to do |format|
       if @yoga_workshop.update_attributes(params[:yoga_workshop])
         flash[:notice] = 'YogaWorkshop was successfully updated.'
-        format.html { redirect_to(@yoga_workshop) }
+        format.html { redirect_to workshop_url(@yoga_workshop) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -82,7 +82,7 @@ class YogaWorkshopsController < ApplicationController
     @yoga_workshop.destroy
 
     respond_to do |format|
-      format.html { redirect_to(yoga_workshops_url) }
+      format.html { redirect_to workshops_url }
       format.xml  { head :ok }
     end
   end
