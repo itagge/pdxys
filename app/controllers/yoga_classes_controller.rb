@@ -49,7 +49,7 @@ class YogaClassesController < ApplicationController
     respond_to do |format|
       if @yoga_class.save
         flash[:notice] = 'YogaClass was successfully created.'
-        format.html { redirect_to(@yoga_class) }
+        format.html { redirect_to class_url(@yoga_class) }
         format.xml  { render :xml => @yoga_class, :status => :created, :location => @yoga_class }
       else
         format.html { render :action => "new" }
