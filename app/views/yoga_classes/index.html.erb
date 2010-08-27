@@ -1,0 +1,21 @@
+<h1>Available Yoga Classes</h1>
+
+<table>
+  <tr>
+    <th>Studio</th>
+    <th>Class Name</th>
+    <th>Level</th>
+    <th>Description</th>
+    <th>Class Type</th>
+  </tr>
+
+<% @yoga_classes.each do |yoga_class| %>
+  <tr>
+	<td><%= link_to (yoga_class.studio.name, class_path(yoga_class.studio_id)) %></td>
+    <td><%=h yoga_class.name %></td>
+    <td><%=h yoga_class.level %></td>
+    <td><%=h yoga_class.description %></td>
+    <td><%=h yoga_class.type_of %></td>
+  </tr>
+<% end %>
+</table>

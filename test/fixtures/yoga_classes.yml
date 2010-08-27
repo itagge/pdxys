@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  level: MyString
+  description: MyText
+  type_of: MyString
+  studio_id: 1
+
+two:
+  name: MyString
+  level: MyString
+  description: MyText
+  type_of: MyString
+  studio_id: 1

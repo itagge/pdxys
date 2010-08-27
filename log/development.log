@@ -1,0 +1,2042 @@
+  [4;36;1mSQL (2.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (5.9ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (38.3ms)[0m   [0;1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (39.6ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateOccurrences (20100824204553)
+  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE TABLE `occurrences` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `day` varchar(255), `start_time` time, `end_time` time, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100824204553')[0m
+Migrating to CreateInstructors (20100824204600)
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCREATE TABLE `instructors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `bio` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100824204600')[0m
+Migrating to CreateYogaWorkshops (20100824204607)
+  [4;36;1mSQL (6.7ms)[0m   [0;1mCREATE TABLE `yoga_workshops` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `studio_id` int(11), `description` text, `end_date` datetime, `start_date` datetime, `level` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100824204607')[0m
+Migrating to CreateYogaClasses (20100824204613)
+  [4;36;1mSQL (3.6ms)[0m   [0;1mCREATE TABLE `yoga_classes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `level` varchar(255), `description` text, `type_of` varchar(255), `studio_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100824204613')[0m
+Migrating to CreateStudios (20100824204619)
+  [4;36;1mSQL (8.9ms)[0m   [0;1mCREATE TABLE `studios` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `address` varchar(255), `city` varchar(255), `state` varchar(255), `zip_code` varchar(255), `description` text, `phone` varchar(255), `email` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100824204619')[0m
+Migrating to CreateUsers (20100824204756)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (4.2ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(40), `name` varchar(100) DEFAULT '', `email` varchar(100), `crypted_password` varchar(40), `salt` varchar(40), `created_at` datetime, `updated_at` datetime, `remember_token` varchar(40), `remember_token_expires_at` datetime, `activation_code` varchar(40), `activated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (9.6ms)[0m   [0;1mCREATE UNIQUE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100824204756')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (6.8ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `instructors`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `instructors`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `occurrences`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `occurrences`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `occurrences`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `studios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `studios`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `yoga_classes`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `yoga_classes`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `yoga_workshops`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `yoga_workshops`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `yoga_workshops`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 13:51:08) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 13:51:12) [GET]
+
+ActionController::RoutingError (No route matches "/sign_up" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 172.16.146.1 at 2010-08-24 13:51:16) [GET]
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering users/new
+Completed in 65ms (View: 48, DB: 1) | 200 OK [http://localhost/signup]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 172.16.146.1 at 2010-08-24 13:51:28) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA=", "user"=>{"password_confirmation"=>"17u9n20", "password"=>"17u9n20", "login"=>"jamiequint", "email"=>"jamiequint@gmail.com"}}
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (3.7ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'jamiequint') LIMIT 1[0m
+  [4;36;1mUser Load (2.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'jamiequint@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`name`, `salt`, `created_at`, `activated_at`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `activation_code`, `remember_token`, `login`, `email`) VALUES('', '0ce20a9ea8db4c966e3cfad88a379f7bd6a0a0f7', '2010-08-24 20:51:28', NULL, '8d3b79369a00ac8563286eb74b0f62d6a1f9f61d', NULL, '2010-08-24 20:51:28', '4d8d394990bfe1e70bbc706e5b7aff2c700f3223', NULL, 'jamiequint', 'jamiequint@gmail.com')[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 28ms (DB: 9) | 302 Found [http://localhost/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 13:51:28) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 13:51:39) [GET]
+
+ActionController::RoutingError (No route matches "/classes/new" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 13:51:44) [GET]
+
+ActionController::RoutingError (No route matches "/classes" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#new (for 172.16.146.1 at 2010-08-24 13:51:55) [GET]
+  [4;35;1mStudio Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+Rendering template within layouts/studios
+Rendering studios/new
+Completed in 36ms (View: 22, DB: 1) | 200 OK [http://localhost/studios/new]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 14:20:50) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#index (for 172.16.146.1 at 2010-08-24 14:21:00) [GET]
+  [4;36;1mStudio Load (0.9ms)[0m   [0;1mSELECT * FROM `studios` [0m
+Rendering template within layouts/studios
+Rendering studios/index
+Completed in 44ms (View: 9, DB: 1) | 200 OK [http://localhost/studios]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#new (for 172.16.146.1 at 2010-08-24 14:21:05) [GET]
+  [4;36;1mStudio Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+Rendering template within layouts/studios
+Rendering studios/new
+Completed in 22ms (View: 11, DB: 1) | 200 OK [http://localhost/studios/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#create (for 172.16.146.1 at 2010-08-24 14:22:55) [POST]
+  Parameters: {"studio"=>{"city"=>"Portland", "address"=>"2277 NW Quimby St", "name"=>"Core Power Yoga", "zip_code"=>"97210", "phone"=>"503.226.9642", "description"=>"CorePower Yoga Portland is a unique and thriving community located in the beautiful Northwest District of Portland, Oregon. We strive to welcome all students of life, at all levels of yoga practice.  The eclectic vibe of this city is reflected in passionate yoga instructors with styles spun to suit all yogis.\r\n \r\nCorePower Yoga Portland offers CorePower Vinyasa, Hot Yoga and Hot Power Fusion. Power and Hot Yoga are invigorating and light us to a deeper path of awakening. Our studio provides yoga classes starting at 6am and the last class is offered at 7pm.\r\n \r\nOur boutique hours are from 8am to 8pm, including beautiful, high performance yoga and street wear for men and women.  We also sell yoga mats, accessories and resourceful books to deepen each yoga pupil's growth.\r\n \r\nCorePower Yoga Portland is perfect for the athlete who surfs, cycles, skis and hikes in this tropical, mountainous Mecca.\r\n \r\nJoin us as you watch your yoga practice unfold.", "email"=>"membership@corepoweryoga.com", "state"=>"Oregon"}, "commit"=>"Create", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA="}
+  [4;36;1mStudio Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mStudio Create (0.6ms)[0m   [0;1mINSERT INTO `studios` (`name`, `address`, `city`, `created_at`, `zip_code`, `updated_at`, `phone`, `description`, `state`, `email`) VALUES('Core Power Yoga', '2277 NW Quimby St', 'Portland', '2010-08-24 21:22:55', '97210', '2010-08-24 21:22:55', '503.226.9642', 'CorePower Yoga Portland is a unique and thriving community located in the beautiful Northwest District of Portland, Oregon. We strive to welcome all students of life, at all levels of yoga practice. The eclectic vibe of this city is reflected in passionate yoga instructors with styles spun to suit all yogis.\r\n \r\nCorePower Yoga Portland offers CorePower Vinyasa, Hot Yoga and Hot Power Fusion. Power and Hot Yoga are invigorating and light us to a deeper path of awakening. Our studio provides yoga classes starting at 6am and the last class is offered at 7pm.\r\n \r\nOur boutique hours are from 8am to 8pm, including beautiful, high performance yoga and street wear for men and women. We also sell yoga mats, accessories and resourceful books to deepen each yoga pupil\'s growth.\r\n \r\nCorePower Yoga Portland is perfect for the athlete who surfs, cycles, skis and hikes in this tropical, mountainous Mecca.\r\n \r\nJoin us as you watch your yoga practice unfold.', 'Oregon', 'membership@corepoweryoga.com')[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/studios/1
+Completed in 19ms (DB: 3) | 302 Found [http://localhost/studios]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:22:55) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.6ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+Completed in 21ms (View: 9, DB: 1) | 200 OK [http://localhost/studios/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#index (for 172.16.146.1 at 2010-08-24 14:23:01) [GET]
+  [4;36;1mStudio Load (0.3ms)[0m   [0;1mSELECT * FROM `studios` [0m
+Rendering template within layouts/studios
+Rendering studios/index
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+Completed in 20ms (View: 10, DB: 1) | 200 OK [http://localhost/studios]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#index (for 172.16.146.1 at 2010-08-24 14:24:37) [GET]
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` [0m
+Rendering template within layouts/studios
+Rendering studios/index
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+Completed in 22ms (View: 11, DB: 1) | 200 OK [http://localhost/studios]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#index (for 172.16.146.1 at 2010-08-24 14:24:47) [GET]
+  [4;36;1mStudio Load (0.2ms)[0m   [0;1mSELECT * FROM `studios` [0m
+Rendering template within layouts/studios
+Rendering studios/index
+  [4;35;1mStudio Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+Completed in 20ms (View: 10, DB: 1) | 200 OK [http://localhost/studios]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:24:49) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+Completed in 21ms (View: 6, DB: 1) | 200 OK [http://localhost/studios/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:25:09) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mStudio Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+Completed in 21ms (View: 10, DB: 1) | 200 OK [http://localhost/studios/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:28:15) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mStudio Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+
+ActionView::TemplateError (undefined local variable or method `studio' for #<ActionView::Base:0xb663eab4>) on line #42 of app/views/studios/show.html.erb:
+39: </p>
+40: 
+41: <h2>Classes</h2>
+42: <% studio.yoga_classes.each do |yoga_class| %>
+43: 	<ul>
+44: 		<li><%= yoga_class.name %></li>
+45: 		<li><%= yoga_class.typeof %></li>
+
+    app/views/studios/show.html.erb:42
+    app/controllers/studios_controller.rb:18:in `show'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (31.9ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:28:26) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+  [4;36;1mYogaClass Load (0.7ms)[0m   [0;1mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.studio_id = 1) [0m
+Completed in 41ms (View: 27, DB: 2) | 200 OK [http://localhost/studios/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 14:28:50) [GET]
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+Completed in 31ms (View: 20, DB: 1) | 200 OK [http://localhost/yoga_classes/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#create (for 172.16.146.1 at 2010-08-24 14:30:29) [POST]
+  Parameters: {"yoga_class"=>{"name"=>"$8 -Hot Power Fusion", "level"=>"Beginner", "studio_id"=>"1", "description"=>"This class is eight dollars only! Join us as we introduce this new flow to CorePower Yoga, Portland. Hot Power Fusion is a rigorous blend of Hot and Power Yoga. It encompasses the meditative quality of Hot yoga with the intensity of power yoga. Focus is on opening the shoulders, hips and spine as well as strengthening core and upper body. It rinses the mind and soul.", "type_of"=>"Bikram"}, "commit"=>"Create", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA="}
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mYogaClass Create (0.4ms)[0m   [0;1mINSERT INTO `yoga_classes` (`name`, `created_at`, `updated_at`, `level`, `studio_id`, `description`, `type_of`) VALUES('$8 -Hot Power Fusion', '2010-08-24 21:30:29', '2010-08-24 21:30:29', 'Beginner', 1, 'This class is eight dollars only! Join us as we introduce this new flow to CorePower Yoga, Portland. Hot Power Fusion is a rigorous blend of Hot and Power Yoga. It encompasses the meditative quality of Hot yoga with the intensity of power yoga. Focus is on opening the shoulders, hips and spine as well as strengthening core and upper body. It rinses the mind and soul.', 'Bikram')[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/yoga_classes/1
+Completed in 17ms (DB: 2) | 302 Found [http://localhost/yoga_classes]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#show (for 172.16.146.1 at 2010-08-24 14:30:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mYogaClass Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mYogaClass Load (0.3ms)[0m   [0;1mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.`id` = 1) [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/show
+Completed in 22ms (View: 10, DB: 1) | 200 OK [http://localhost/yoga_classes/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:30:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+  [4;36;1mYogaClass Load (0.4ms)[0m   [0;1mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.studio_id = 1) [0m
+  [4;35;1mYogaClass Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+
+ActionView::TemplateError (undefined method `typeof' for #<YogaClass:0xb66f25b4>) on line #45 of app/views/studios/show.html.erb:
+42: <% @studio.yoga_classes.each do |yoga_class| %>
+43: 	<ul>
+44: 		<li><%= yoga_class.name %></li>
+45: 		<li><%= yoga_class.typeof %></li>
+46: 		<li><%= yoga_class.occurences.map {|o| o.day} %></li>
+47: 		<li><%= yoga_class.start_time %></li>
+48: 		<li><%= yoga_class.end_time %></li>
+
+    app/views/studios/show.html.erb:45
+    app/views/studios/show.html.erb:42
+    app/controllers/studios_controller.rb:18:in `show'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (33.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:30:43) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+  [4;35;1mYogaClass Load (0.1ms)[0m   [0mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.studio_id = 1) [0m
+  [4;36;1mYogaClass Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+
+ActionView::TemplateError (undefined method `occurences' for #<YogaClass:0xb652db20>) on line #46 of app/views/studios/show.html.erb:
+43: 	<ul>
+44: 		<li><%= yoga_class.name %></li>
+45: 		<li><%= yoga_class.type_of %></li>
+46: 		<li><%= yoga_class.occurences.map {|o| o.day} %></li>
+47: 		<li><%= yoga_class.start_time %></li>
+48: 		<li><%= yoga_class.end_time %></li>
+49: 	</ul>
+
+    app/views/studios/show.html.erb:46
+    app/views/studios/show.html.erb:42
+    app/controllers/studios_controller.rb:18:in `show'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (93.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:30:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+  [4;36;1mYogaClass Load (0.2ms)[0m   [0;1mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.studio_id = 1) [0m
+  [4;35;1mYogaClass Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mOccurrence Load (0.0ms)[0m   [0;1mMysql::Error: Unknown column 'occurrences.yoga_class_id' in 'where clause': SELECT * FROM `occurrences` WHERE (`occurrences`.yoga_class_id = 1) [0m
+
+ActionView::TemplateError (Mysql::Error: Unknown column 'occurrences.yoga_class_id' in 'where clause': SELECT * FROM `occurrences` WHERE (`occurrences`.yoga_class_id = 1) ) on line #46 of app/views/studios/show.html.erb:
+43: 	<ul>
+44: 		<li><%= yoga_class.name %></li>
+45: 		<li><%= yoga_class.type_of %></li>
+46: 		<li><%= yoga_class.occurrences.map {|o| o.day} %></li>
+47: 		<li><%= yoga_class.start_time %></li>
+48: 		<li><%= yoga_class.end_time %></li>
+49: 	</ul>
+
+    app/views/studios/show.html.erb:46
+    app/views/studios/show.html.erb:42
+    app/controllers/studios_controller.rb:18:in `show'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (86.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateOccurrences (20100824204553)
+Migrating to CreateInstructors (20100824204600)
+Migrating to CreateYogaWorkshops (20100824204607)
+Migrating to CreateYogaClasses (20100824204613)
+Migrating to CreateStudios (20100824204619)
+Migrating to CreateUsers (20100824204756)
+Migrating to StudioInstructors (20100824211630)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateOccurrences (20100824204553)
+Migrating to CreateInstructors (20100824204600)
+Migrating to CreateYogaWorkshops (20100824204607)
+Migrating to CreateYogaClasses (20100824204613)
+Migrating to CreateStudios (20100824204619)
+Migrating to CreateUsers (20100824204756)
+Migrating to StudioInstructors (20100824211630)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateOccurrences (20100824204553)
+Migrating to CreateInstructors (20100824204600)
+Migrating to CreateYogaWorkshops (20100824204607)
+Migrating to CreateYogaClasses (20100824204613)
+Migrating to CreateStudios (20100824204619)
+Migrating to CreateUsers (20100824204756)
+Migrating to StudioInstructors (20100824211630)
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (5.1ms)[0m   [0;1mCREATE TABLE `studio_instructors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `studio_id` int(11), `instructor_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100824211630')[0m
+Migrating to YogaClassInstructors (20100824211639)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE `yoga_class_instructors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `yoga_class_id` int(11), `instructor_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100824211639')[0m
+Migrating to YogaWorkshopInstructors (20100824211654)
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (4.4ms)[0m   [0;1mCREATE TABLE `yoga_workshop_instructors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `yoga_workshop_id` int(11), `instructor_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100824211654')[0m
+Migrating to OccurrencesForeignKey (20100824213127)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mMysql::Error: Table 'yoga.occurrence' doesn't exist: ALTER TABLE `occurrence` ADD `yoga_class_id` int(11)[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateOccurrences (20100824204553)
+Migrating to CreateInstructors (20100824204600)
+Migrating to CreateYogaWorkshops (20100824204607)
+Migrating to CreateYogaClasses (20100824204613)
+Migrating to CreateStudios (20100824204619)
+Migrating to CreateUsers (20100824204756)
+Migrating to StudioInstructors (20100824211630)
+Migrating to YogaClassInstructors (20100824211639)
+Migrating to YogaWorkshopInstructors (20100824211654)
+Migrating to OccurrencesForeignKey (20100824213127)
+  [4;35;1mSQL (9.8ms)[0m   [0mALTER TABLE `occurrences` ADD `yoga_class_id` int(11)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100824213127')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `occurrences`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mdescribe `occurrences`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `occurrences`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW FIELDS FROM `studio_instructors`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `studio_instructors`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `studio_instructors`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `studios`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `studios`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `yoga_class_instructors`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `yoga_class_instructors`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `yoga_class_instructors`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `yoga_classes`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `yoga_classes`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW FIELDS FROM `yoga_workshop_instructors`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mdescribe `yoga_workshop_instructors`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `yoga_workshop_instructors`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW FIELDS FROM `yoga_workshops`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `yoga_workshops`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `yoga_workshops`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:34:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+  [4;36;1mYogaClass Load (0.1ms)[0m   [0;1mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.studio_id = 1) [0m
+  [4;35;1mYogaClass Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mOccurrence Load (0.4ms)[0m   [0;1mSELECT * FROM `occurrences` WHERE (`occurrences`.yoga_class_id = 1) [0m
+
+ActionView::TemplateError (undefined method `start_time' for #<YogaClass:0xb66c3250>) on line #47 of app/views/studios/show.html.erb:
+44: 		<li><%= yoga_class.name %></li>
+45: 		<li><%= yoga_class.type_of %></li>
+46: 		<li><%= yoga_class.occurrences.map {|o| o.day} %></li>
+47: 		<li><%= yoga_class.start_time %></li>
+48: 		<li><%= yoga_class.end_time %></li>
+49: 	</ul>
+50: <% end %>
+
+    app/views/studios/show.html.erb:47
+    app/views/studios/show.html.erb:42
+    app/controllers/studios_controller.rb:18:in `show'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (34.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateOccurrences (20100824204553)
+Migrating to CreateInstructors (20100824204600)
+Migrating to CreateYogaWorkshops (20100824204607)
+Migrating to CreateYogaClasses (20100824204613)
+Migrating to CreateStudios (20100824204619)
+Migrating to CreateUsers (20100824204756)
+Migrating to StudioInstructors (20100824211630)
+Migrating to YogaClassInstructors (20100824211639)
+Migrating to YogaWorkshopInstructors (20100824211654)
+Migrating to OccurrencesForeignKey (20100824213127)
+Migrating to ClassTimeColumns (20100824213552)
+  [4;35;1mSQL (6.3ms)[0m   [0mALTER TABLE `yoga_classes` ADD `start_time` datetime[0m
+  [4;36;1mSQL (9.7ms)[0m   [0;1mALTER TABLE `yoga_classes` ADD `end_time` datetime[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100824213552')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `instructors`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `instructors`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `occurrences`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `occurrences`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `occurrences`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `studio_instructors`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `studio_instructors`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `studio_instructors`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `studios`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `studios`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW FIELDS FROM `yoga_class_instructors`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `yoga_class_instructors`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `yoga_class_instructors`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `yoga_classes`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `yoga_classes`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW FIELDS FROM `yoga_workshop_instructors`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `yoga_workshop_instructors`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `yoga_workshop_instructors`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `yoga_workshops`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `yoga_workshops`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `yoga_workshops`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:36:49) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+  [4;36;1mYogaClass Load (0.4ms)[0m   [0;1mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.studio_id = 1) [0m
+  [4;35;1mYogaClass Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mOccurrence Load (0.1ms)[0m   [0;1mSELECT * FROM `occurrences` WHERE (`occurrences`.yoga_class_id = 1) [0m
+Completed in 34ms (View: 21, DB: 2) | 200 OK [http://localhost/studios/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 14:37:47) [GET]
+
+ActionController::RoutingError (No route matches "/classes/1" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#show (for 172.16.146.1 at 2010-08-24 14:37:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mYogaClass Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mYogaClass Load (0.2ms)[0m   [0;1mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.`id` = 1) [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/show
+Completed in 17ms (View: 6, DB: 1) | 200 OK [http://localhost/yoga_classes/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#show (for 172.16.146.1 at 2010-08-24 14:46:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mYogaClass Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;35;1mYogaClass Load (0.1ms)[0m   [0mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.`id` = 1) [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/show
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Completed in 33ms (View: 20, DB: 2) | 200 OK [http://localhost/yoga_classes/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 14:47:00) [GET]
+
+ActionController::RoutingError (No route matches "/yoga_studios" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#index (for 172.16.146.1 at 2010-08-24 14:47:02) [GET]
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` [0m
+Rendering template within layouts/studios
+Rendering studios/index
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+Completed in 21ms (View: 10, DB: 1) | 200 OK [http://localhost/studios]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#show (for 172.16.146.1 at 2010-08-24 14:47:04) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mStudio Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Rendering template within layouts/studios
+Rendering studios/show
+  [4;35;1mYogaClass Load (0.1ms)[0m   [0mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.studio_id = 1) [0m
+  [4;36;1mYogaClass Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;35;1mOccurrence Load (0.1ms)[0m   [0mSELECT * FROM `occurrences` WHERE (`occurrences`.yoga_class_id = 1) [0m
+Completed in 78ms (View: 25, DB: 2) | 200 OK [http://localhost/studios/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#new (for 172.16.146.1 at 2010-08-24 14:48:53) [GET]
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+Rendering template within layouts/studios
+Rendering studios/new
+Completed in 21ms (View: 10, DB: 1) | 200 OK [http://localhost/studios/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StudiosController#index (for 172.16.146.1 at 2010-08-24 14:51:39) [GET]
+  [4;35;1mStudio Load (0.2ms)[0m   [0mSELECT * FROM `studios` [0m
+Rendering template within layouts/studios
+Rendering studios/index
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+Completed in 18ms (View: 7, DB: 1) | 200 OK [http://localhost/studios]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#index (for 172.16.146.1 at 2010-08-24 14:51:45) [GET]
+  [4;36;1mYogaClass Load (0.4ms)[0m   [0;1mSELECT * FROM `yoga_classes` [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/index
+  [4;35;1mYogaClass Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+
+ActionView::TemplateError (undefined method `yoga_studio_path' for #<ActionView::Base:0xb65f74ac>) on line #18 of app/views/yoga_classes/index.html.erb:
+15:     <td><%=h yoga_class.level %></td>
+16:     <td><%=h yoga_class.description %></td>
+17:     <td><%=h yoga_class.type_of %></td>
+18:     <td><%= link_to (yoga_class.studio.name, yoga_studio_path(yoga_class.studio_id)) %></td>
+19:   </tr>
+20: <% end %>
+21: </table>
+
+    app/views/yoga_classes/index.html.erb:18
+    app/views/yoga_classes/index.html.erb:12:in `each'
+    app/views/yoga_classes/index.html.erb:12
+    app/controllers/yoga_classes_controller.rb:7:in `index'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (76.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#index (for 172.16.146.1 at 2010-08-24 14:52:06) [GET]
+  [4;35;1mYogaClass Load (0.1ms)[0m   [0mSELECT * FROM `yoga_classes` [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/index
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;35;1mStudio Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+
+ActionView::TemplateError (undefined method `yoga_studios_path' for #<ActionView::Base:0xb66a22d0>) on line #18 of app/views/yoga_classes/index.html.erb:
+15:     <td><%=h yoga_class.level %></td>
+16:     <td><%=h yoga_class.description %></td>
+17:     <td><%=h yoga_class.type_of %></td>
+18:     <td><%= link_to (yoga_class.studio.name, yoga_studios_path(yoga_class.studio_id)) %></td>
+19:   </tr>
+20: <% end %>
+21: </table>
+
+    app/views/yoga_classes/index.html.erb:18
+    app/views/yoga_classes/index.html.erb:12:in `each'
+    app/views/yoga_classes/index.html.erb:12
+    app/controllers/yoga_classes_controller.rb:7:in `index'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (31.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#index (for 172.16.146.1 at 2010-08-24 14:52:16) [GET]
+  [4;36;1mYogaClass Load (0.1ms)[0m   [0;1mSELECT * FROM `yoga_classes` [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/index
+  [4;35;1mYogaClass Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Completed in 81ms (View: 70, DB: 2) | 200 OK [http://localhost/yoga_classes]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#index (for 172.16.146.1 at 2010-08-24 14:52:46) [GET]
+  [4;35;1mYogaClass Load (0.1ms)[0m   [0mSELECT * FROM `yoga_classes` [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/index
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;35;1mStudio Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Completed in 33ms (View: 21, DB: 2) | 200 OK [http://localhost/yoga_classes]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 14:57:09) [GET]
+  [4;36;1mYogaClass Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::CLASS_LEVELS) on line #12 of app/views/yoga_classes/new.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :level %><br />
+12:     <%= f.select :level, CLASS_LEVELS %>
+13:   </p>
+14:   <p>
+15:     <%= f.label :description %><br />
+
+    app/views/yoga_classes/new.html.erb:12
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:29:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (39.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 14:57:33) [GET]
+  [4;36;1mYogaClass Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+Completed in 24ms (View: 12, DB: 1) | 200 OK [http://localhost/yoga_classes/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 15:00:27) [GET]
+  [4;36;1mYogaClass Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::CLASS_LEVELS) on line #12 of app/views/yoga_classes/new.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :level %><br />
+12:     <%= f.select :level, CLASS_LEVELS %>
+13:   </p>
+14:   <p>
+15:     <%= f.label :description %><br />
+
+    app/views/yoga_classes/new.html.erb:12
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:29:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (31.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 15:07:50) [GET]
+
+ActionController::RoutingError (No route matches "/classes/new" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 15:07:58) [GET]
+  [4;35;1mYogaClass Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::CLASS_LEVELS) on line #12 of app/views/yoga_classes/new.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :level %><br />
+12:     <%= f.select :level, CLASS_LEVELS %>
+13:   </p>
+14:   <p>
+15:     <%= f.label :description %><br />
+
+    app/views/yoga_classes/new.html.erb:12
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:29:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (32.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 15:11:39) [GET]
+  [4;35;1mYogaClass Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+
+ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::CLASS_LEVELS) on line #12 of app/views/yoga_classes/new.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :level %><br />
+12:     <%= f.select :level, CLASS_LEVELS %>
+13:   </p>
+14:   <p>
+15:     <%= f.label :description %><br />
+
+    app/views/yoga_classes/new.html.erb:12
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:29:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (100.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 15:12:32) [GET]
+  [4;35;1mYogaClass Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+Completed in 22ms (View: 12, DB: 1) | 200 OK [http://localhost/yoga_classes/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 15:14:19) [GET]
+  [4;35;1mYogaClass Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+Completed in 24ms (View: 13, DB: 1) | 200 OK [http://localhost/yoga_classes/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 15:14:32) [GET]
+  [4;35;1mYogaClass Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+Completed in 22ms (View: 12, DB: 1) | 200 OK [http://localhost/yoga_classes/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 15:15:04) [GET]
+  [4;35;1mYogaClass Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+Completed in 24ms (View: 14, DB: 1) | 200 OK [http://localhost/yoga_classes/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaWorkshopsController#new (for 172.16.146.1 at 2010-08-24 15:17:15) [GET]
+  [4;35;1mYogaWorkshop Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `yoga_workshops`[0m
+Rendering template within layouts/yoga_workshops
+Rendering yoga_workshops/new
+Completed in 217ms (View: 165, DB: 1) | 200 OK [http://localhost/yoga_workshops/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaWorkshopsController#new (for 172.16.146.1 at 2010-08-24 15:18:39) [GET]
+  [4;35;1mYogaWorkshop Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `yoga_workshops`[0m
+Rendering template within layouts/yoga_workshops
+Rendering yoga_workshops/new
+Completed in 37ms (View: 27, DB: 1) | 200 OK [http://localhost/yoga_workshops/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 15:19:29) [GET]
+
+ActionController::RoutingError (No route matches "/classes" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#index (for 172.16.146.1 at 2010-08-24 15:19:34) [GET]
+  [4;36;1mYogaClass Load (0.2ms)[0m   [0;1mSELECT * FROM `yoga_classes` [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/index
+  [4;35;1mYogaClass Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Completed in 28ms (View: 17, DB: 2) | 200 OK [http://localhost/yoga_classes]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 15:44:18) [GET]
+
+NoMethodError (undefined method `login_required' for #<YogaClassesController:0xb65af3c8>):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (23.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 15:44:58) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/yoga_classes/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 172.16.146.1 at 2010-08-24 15:44:58) [GET]
+Rendering sessions/new
+Completed in 11ms (View: 9, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 172.16.146.1 at 2010-08-24 15:45:01) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA=", "login"=>"jamiequint@gmail.com", "password"=>"17u9n20"}
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'jamiequint@gmail.com' and activated_at IS NOT NULL) LIMIT 1[0m
+Failed login for 'jamiequint@gmail.com' from 172.16.146.1 at Tue Aug 24 22:45:01 UTC 2010
+Rendering sessions/new
+Completed in 19ms (View: 5, DB: 1) | 200 OK [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 172.16.146.1 at 2010-08-24 15:45:04) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA=", "login"=>"jamiequint@gmail.com", "password"=>"17u9n20"}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'jamiequint@gmail.com' and activated_at IS NOT NULL) LIMIT 1[0m
+Failed login for 'jamiequint@gmail.com' from 172.16.146.1 at Tue Aug 24 22:45:04 UTC 2010
+Rendering sessions/new
+Completed in 16ms (View: 3, DB: 0) | 200 OK [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 172.16.146.1 at 2010-08-24 15:45:14) [GET]
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering users/new
+Completed in 18ms (View: 6, DB: 1) | 200 OK [http://localhost/signup]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 172.16.146.1 at 2010-08-24 15:45:22) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA=", "login"=>"jamiequint", "password"=>"17u9n20"}
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'jamiequint' and activated_at IS NOT NULL) LIMIT 1[0m
+Failed login for 'jamiequint' from 172.16.146.1 at Tue Aug 24 22:45:22 UTC 2010
+Rendering sessions/new
+Completed in 16ms (View: 3, DB: 1) | 200 OK [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 172.16.146.1 at 2010-08-24 15:45:24) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA=", "login"=>"jamiequint", "password"=>"17u9n20"}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'jamiequint' and activated_at IS NOT NULL) LIMIT 1[0m
+Failed login for 'jamiequint' from 172.16.146.1 at Tue Aug 24 22:45:24 UTC 2010
+Rendering sessions/new
+Completed in 16ms (View: 3, DB: 0) | 200 OK [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 172.16.146.1 at 2010-08-24 15:45:29) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering users/new
+Completed in 60ms (View: 16, DB: 1) | 200 OK [http://localhost/signup]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 19:44:14) [GET]
+
+ActionController::RoutingError (No route matches "/classes" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#index (for 172.16.146.1 at 2010-08-24 19:44:18) [GET]
+  [4;35;1mYogaClass Load (0.2ms)[0m   [0mSELECT * FROM `yoga_classes` [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/index
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;35;1mStudio Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Completed in 30ms (View: 18, DB: 2) | 200 OK [http://localhost/yoga_classes]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 19:44:27) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/yoga_classes/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 172.16.146.1 at 2010-08-24 19:44:27) [GET]
+Rendering sessions/new
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 172.16.146.1 at 2010-08-24 19:44:32) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA=", "login"=>"jamiequint", "password"=>"17u9n20"}
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'jamiequint' and activated_at IS NOT NULL) LIMIT 1[0m
+Failed login for 'jamiequint' from 172.16.146.1 at Wed Aug 25 02:44:32 UTC 2010
+Rendering sessions/new
+Completed in 17ms (View: 3, DB: 0) | 200 OK [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 172.16.146.1 at 2010-08-24 19:44:36) [GET]
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering users/new
+Completed in 63ms (View: 50, DB: 1) | 200 OK [http://localhost/signup]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 172.16.146.1 at 2010-08-24 19:44:43) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA=", "user"=>{"password_confirmation"=>"17u9n20", "password"=>"17u9n20", "login"=>"jamiequint", "email"=>"jamiequint@gmail.com"}}
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'jamiequint') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'jamiequint@gmail.com') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+Rendering users/new
+Completed in 31ms (View: 12, DB: 2) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 172.16.146.1 at 2010-08-24 19:45:49) [POST]
+  Parameters: {"commit"=>"Sign up", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA=", "user"=>{"password_confirmation"=>"17u9n20", "password"=>"17u9n20", "login"=>"jamie", "email"=>"jsquintz@gmail.com"}}
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'jamie') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'jsquintz@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO `users` (`name`, `salt`, `created_at`, `activated_at`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `activation_code`, `remember_token`, `login`, `email`) VALUES('', '8bdbc5806156502b0eb0448d02db0fec6311d8da', '2010-08-25 02:45:49', NULL, 'cbefee22e828290eedc78333d56616a1cd330721', NULL, '2010-08-25 02:45:49', 'd6ebc04f51489fc9601591bed3c737b5930724af', NULL, 'jamie', 'jsquintz@gmail.com')[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/yoga_classes/new
+Completed in 20ms (DB: 3) | 302 Found [http://localhost/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 19:45:49) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/yoga_classes/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 172.16.146.1 at 2010-08-24 19:45:49) [GET]
+Rendering sessions/new
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 0) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`name` = 'jamiequint') LIMIT 1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'jamiequint') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'jamiequint') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'jamiequint' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'jamiequint@gmail.com' AND `users`.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (2.5ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-08-25 02:47:47', `activated_at` = '2010-08-25 02:47:44' WHERE `id` = 1[0m
+Sent mail to jamiequint@gmail.com
+
+Date: Tue, 24 Aug 2010 19:47:47 -0700
+From: ADMINEMAIL
+To: jamiequint@gmail.com
+Subject: [YOURSITE] Your account has been activated!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+jamiequint, your account has been activated.  Welcome aboard!
+
+  http://YOURSITE/
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 172.16.146.1 at 2010-08-24 19:47:55) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA=", "login"=>"jamiequint", "password"=>"17u9n20"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'jamiequint' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/yoga_classes/new
+Completed in 20ms (DB: 1) | 302 Found [http://localhost/session]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 19:47:56) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+
+ActionView::TemplateError (undefined method `studio' for #<User:0xb67272f0>) on line #20 of app/views/yoga_classes/new.html.erb:
+17:   </p>
+18:   <p>
+19:     <%= f.label :instructor %><br />
+20:     <%= f.select current_user.studio.instructors %>
+21:   </p>
+22:   <p>
+23:     <%= f.label :yoga_type %><br />
+
+    app/views/yoga_classes/new.html.erb:20
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:32:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (35.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 19:48:35) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+  [4;35;1mStudio Load (0.0ms)[0m   [0mMysql::Error: Unknown column 'studios.user_id' in 'where clause': SELECT * FROM `studios` WHERE (`studios`.user_id = 1) LIMIT 1[0m
+
+ActionView::TemplateError (Mysql::Error: Unknown column 'studios.user_id' in 'where clause': SELECT * FROM `studios` WHERE (`studios`.user_id = 1)  LIMIT 1) on line #20 of app/views/yoga_classes/new.html.erb:
+17:   </p>
+18:   <p>
+19:     <%= f.label :instructor %><br />
+20:     <%= f.select current_user.studio.instructors %>
+21:   </p>
+22:   <p>
+23:     <%= f.label :yoga_type %><br />
+
+    app/views/yoga_classes/new.html.erb:20
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:32:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (95.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateOccurrences (20100824204553)
+Migrating to CreateInstructors (20100824204600)
+Migrating to CreateYogaWorkshops (20100824204607)
+Migrating to CreateYogaClasses (20100824204613)
+Migrating to CreateStudios (20100824204619)
+Migrating to CreateUsers (20100824204756)
+Migrating to StudioInstructors (20100824211630)
+Migrating to YogaClassInstructors (20100824211639)
+Migrating to YogaWorkshopInstructors (20100824211654)
+Migrating to OccurrencesForeignKey (20100824213127)
+Migrating to ClassTimeColumns (20100824213552)
+Migrating to AddUserStudioRelation (20100825025153)
+  [4;35;1mSQL (6.4ms)[0m   [0mALTER TABLE `users` ADD `studio_id` int(11)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100825025153')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW FIELDS FROM `occurrences`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mdescribe `occurrences`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `occurrences`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW FIELDS FROM `studio_instructors`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `studio_instructors`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `studio_instructors`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mdescribe `studios`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `studios`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `yoga_class_instructors`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `yoga_class_instructors`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `yoga_class_instructors`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `yoga_classes`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `yoga_classes`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW FIELDS FROM `yoga_workshop_instructors`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mdescribe `yoga_workshop_instructors`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `yoga_workshop_instructors`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW FIELDS FROM `yoga_workshops`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `yoga_workshops`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `yoga_workshops`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 19:52:26) [GET]
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mYogaClass Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+
+ActionView::TemplateError (undefined method `instructors' for nil:NilClass) on line #20 of app/views/yoga_classes/new.html.erb:
+17:   </p>
+18:   <p>
+19:     <%= f.label :instructor %><br />
+20:     <%= f.select current_user.studio.instructors %>
+21:   </p>
+22:   <p>
+23:     <%= f.label :yoga_type %><br />
+
+    app/views/yoga_classes/new.html.erb:20
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:32:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (33.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'jamiequint') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'jamiequint' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'jamiequint@gmail.com' AND `users`.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (0.2ms)[0m   [0;1mUPDATE `users` SET `updated_at` = '2010-08-25 02:53:07', `studio_id` = 1 WHERE `id` = 1[0m
+Sent mail to jamiequint@gmail.com
+
+Date: Tue, 24 Aug 2010 19:53:07 -0700
+From: ADMINEMAIL
+To: jamiequint@gmail.com
+Subject: [YOURSITE] Your account has been activated!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+jamiequint, your account has been activated.  Welcome aboard!
+
+  http://YOURSITE/
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 19:53:10) [GET]
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mYogaClass Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+
+ActionView::TemplateError (uninitialized constant Studio::StudioInstructor) on line #20 of app/views/yoga_classes/new.html.erb:
+17:   </p>
+18:   <p>
+19:     <%= f.label :instructor %><br />
+20:     <%= f.select current_user.studio.instructors %>
+21:   </p>
+22:   <p>
+23:     <%= f.label :yoga_type %><br />
+
+    app/views/yoga_classes/new.html.erb:20
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:32:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (39.8ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mStudio Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+  [4;36;1mInstructor Load (0.7ms)[0m   [0;1mSELECT `instructors`.* FROM `instructors` INNER JOIN `studio_instructors` ON `instructors`.id = `studio_instructors`.instructor_id WHERE ((`studio_instructors`.studio_id = 1)) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 20:02:57) [GET]
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mYogaClass Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+  [4;36;1mStudio Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) on line #20 of app/views/yoga_classes/new.html.erb:
+17:   </p>
+18:   <p>
+19:     <%= f.label :instructor %><br />
+20:     <%= f.select current_user.studio.instructors %>
+21:   </p>
+22:   <p>
+23:     <%= f.label :yoga_type %><br />
+
+    app/views/yoga_classes/new.html.erb:20:in `select'
+    app/views/yoga_classes/new.html.erb:20
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:32:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (35.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstructorsController#new (for 172.16.146.1 at 2010-08-24 20:10:15) [GET]
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mInstructor Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+Rendering template within layouts/instructors
+Rendering instructors/new
+Completed in 43ms (View: 18, DB: 2) | 200 OK [http://localhost/instructors/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstructorsController#create (for 172.16.146.1 at 2010-08-24 20:10:28) [POST]
+  Parameters: {"instructor"=>{"name"=>"Ian Tagge", "bio"=>"Ian is a badass instructor"}, "commit"=>"Create", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA="}
+  [4;35;1mUser Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mInstructor Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+
+NoMethodError (undefined method `studio' for #<Instructor:0xb648a45c>):
+  app/controllers/instructors_controller.rb:47:in `create'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (81.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstructorsController#create (for 172.16.146.1 at 2010-08-24 20:11:11) [POST]
+  Parameters: {"instructor"=>{"name"=>"Ian Tagge", "bio"=>"Ian is a badass instructor"}, "commit"=>"Create", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA="}
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mInstructor Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+  [4;36;1mStudio Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mInstructor Create (0.5ms)[0m   [0mINSERT INTO `instructors` (`name`, `created_at`, `updated_at`, `bio`) VALUES('Ian Tagge', '2010-08-25 03:11:11', '2010-08-25 03:11:11', 'Ian is a badass instructor')[0m
+  [4;36;1mStudioInstructor Columns (0.4ms)[0m   [0;1mSHOW FIELDS FROM `studio_instructors`[0m
+  [4;35;1mStudioInstructor Create (0.2ms)[0m   [0mINSERT INTO `studio_instructors` (`created_at`, `updated_at`, `studio_id`, `instructor_id`) VALUES('2010-08-25 03:11:11', '2010-08-25 03:11:11', 1, 1)[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/instructors/1
+Completed in 48ms (DB: 4) | 302 Found [http://localhost/instructors]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstructorsController#show (for 172.16.146.1 at 2010-08-24 20:11:11) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mInstructor Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mInstructor Load (0.2ms)[0m   [0mSELECT * FROM `instructors` WHERE (`instructors`.`id` = 1) [0m
+Rendering template within layouts/instructors
+Rendering instructors/show
+Completed in 19ms (View: 9, DB: 1) | 200 OK [http://localhost/instructors/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateOccurrences (20100824204553)
+Migrating to CreateInstructors (20100824204600)
+Migrating to CreateYogaWorkshops (20100824204607)
+Migrating to CreateYogaClasses (20100824204613)
+Migrating to CreateStudios (20100824204619)
+Migrating to CreateUsers (20100824204756)
+Migrating to StudioInstructors (20100824211630)
+Migrating to YogaClassInstructors (20100824211639)
+Migrating to YogaWorkshopInstructors (20100824211654)
+Migrating to OccurrencesForeignKey (20100824213127)
+Migrating to ClassTimeColumns (20100824213552)
+Migrating to AddUserStudioRelation (20100825025153)
+Migrating to ChangeInstructorBioColumnType (20100825031135)
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+  [4;36;1mSQL (6.1ms)[0m   [0;1mALTER TABLE `instructors` CHANGE `bio` `bio` text DEFAULT NULL[0m
+  [4;35;1mSQL (3.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100825031135')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mdescribe `instructors`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `instructors`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `occurrences`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `occurrences`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `occurrences`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW FIELDS FROM `studio_instructors`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mdescribe `studio_instructors`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `studio_instructors`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `studios`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `studios`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `yoga_class_instructors`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `yoga_class_instructors`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `yoga_class_instructors`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `yoga_classes`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `yoga_classes`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW FIELDS FROM `yoga_workshop_instructors`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mdescribe `yoga_workshop_instructors`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `yoga_workshop_instructors`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW FIELDS FROM `yoga_workshops`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mdescribe `yoga_workshops`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `yoga_workshops`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstructorsController#new (for 172.16.146.1 at 2010-08-24 20:12:29) [GET]
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mInstructor Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+Rendering template within layouts/instructors
+Rendering instructors/new
+Completed in 32ms (View: 7, DB: 2) | 200 OK [http://localhost/instructors/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstructorsController#new (for 172.16.146.1 at 2010-08-24 20:12:58) [GET]
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mInstructor Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+Rendering template within layouts/instructors
+Rendering instructors/new
+Completed in 35ms (View: 10, DB: 1) | 200 OK [http://localhost/instructors/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstructorsController#index (for 172.16.146.1 at 2010-08-24 20:24:44) [GET]
+  [4;35;1mInstructor Load (0.5ms)[0m   [0mSELECT * FROM `instructors` [0m
+Rendering template within layouts/instructors
+Rendering instructors/index
+  [4;36;1mInstructor Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+Completed in 22ms (View: 10, DB: 1) | 200 OK [http://localhost/instructors]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InstructorsController#show (for 172.16.146.1 at 2010-08-24 20:24:48) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mInstructor Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mInstructor Load (0.2ms)[0m   [0mSELECT * FROM `instructors` WHERE (`instructors`.`id` = 1) [0m
+Rendering template within layouts/instructors
+Rendering instructors/show
+Completed in 16ms (View: 5, DB: 1) | 200 OK [http://localhost/instructors/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 20:25:16) [GET]
+
+ActionController::RoutingError (No route matches "/classes/new" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 20:25:21) [GET]
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mYogaClass Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) on line #20 of app/views/yoga_classes/new.html.erb:
+17:   </p>
+18:   <p>
+19:     <%= f.label :instructor %><br />
+20:     <%= f.select current_user.studio.instructors %>
+21:   </p>
+22:   <p>
+23:     <%= f.label :yoga_type %><br />
+
+    app/views/yoga_classes/new.html.erb:20:in `select'
+    app/views/yoga_classes/new.html.erb:20
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:32:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (37.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mInstructor Load (0.1ms)[0m   [0mSELECT * FROM `instructors` [0m
+  [4;36;1mInstructor Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mStudio Load (0.6ms)[0m   [0mSELECT `studios`.* FROM `studios` INNER JOIN `studio_instructors` ON `studios`.id = `studio_instructors`.studio_id WHERE ((`studio_instructors`.instructor_id = 1)) [0m
+  [4;36;1mStudio Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mUser Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'jamiequint') LIMIT 1[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+  [4;36;1mInstructor Load (0.5ms)[0m   [0;1mSELECT `instructors`.* FROM `instructors` INNER JOIN `studio_instructors` ON `instructors`.id = `studio_instructors`.instructor_id WHERE ((`studio_instructors`.studio_id = 1)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 20:27:18) [GET]
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+  [4;35;1mInstructor Load (0.1ms)[0m   [0mSELECT `instructors`.* FROM `instructors` INNER JOIN `studio_instructors` ON `instructors`.id = `studio_instructors`.instructor_id WHERE ((`studio_instructors`.studio_id = 1)) [0m
+  [4;36;1mInstructor Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) on line #20 of app/views/yoga_classes/new.html.erb:
+17:   </p>
+18:   <p>
+19:     <%= f.label :instructor %><br />
+20:     <%= f.select current_user.studio.instructors.map {|i| i.name } %>
+21:   </p>
+22:   <p>
+23:     <%= f.label :yoga_type %><br />
+
+    app/views/yoga_classes/new.html.erb:20:in `select'
+    app/views/yoga_classes/new.html.erb:20
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:32:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (33.9ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 20:27:32) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+  [4;35;1mStudio Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+  [4;35;1mInstructor Load (0.1ms)[0m   [0mSELECT `instructors`.* FROM `instructors` INNER JOIN `studio_instructors` ON `instructors`.id = `studio_instructors`.instructor_id WHERE ((`studio_instructors`.studio_id = 1)) [0m
+  [4;36;1mInstructor Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+
+ActionView::TemplateError (undefined method `instructor' for #<YogaClass:0xb650a828>) on line #20 of app/views/yoga_classes/new.html.erb:
+17:   </p>
+18:   <p>
+19:     <%= f.label :instructor %><br />
+20:     <%= f.select :instructor, current_user.studio.instructors.map {|i| i.name } %>
+21:   </p>
+22:   <p>
+23:     <%= f.label :yoga_type %><br />
+
+    app/views/yoga_classes/new.html.erb:20
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:32:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (91.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 20:27:58) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+  [4;35;1mInstructor Load (0.1ms)[0m   [0mSELECT `instructors`.* FROM `instructors` INNER JOIN `studio_instructors` ON `instructors`.id = `studio_instructors`.instructor_id WHERE ((`studio_instructors`.studio_id = 1)) [0m
+  [4;36;1mInstructor Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+
+ActionView::TemplateError (undefined method `instructor_id' for #<YogaClass:0xb653f2e4>) on line #20 of app/views/yoga_classes/new.html.erb:
+17:   </p>
+18:   <p>
+19:     <%= f.label :instructor_id %><br />
+20:     <%= f.select :instructor_id, current_user.studio.instructors.map {|i| i.name } %>
+21:   </p>
+22:   <p>
+23:     <%= f.label :yoga_type %><br />
+
+    app/views/yoga_classes/new.html.erb:20
+    app/views/yoga_classes/new.html.erb:3
+    app/controllers/yoga_classes_controller.rb:32:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (91.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 20:28:27) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mYogaClass Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.0ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+  [4;35;1mInstructor Load (0.1ms)[0m   [0mSELECT `instructors`.* FROM `instructors` INNER JOIN `studio_instructors` ON `instructors`.id = `studio_instructors`.instructor_id WHERE ((`studio_instructors`.studio_id = 1)) [0m
+  [4;36;1mInstructor Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+Completed in 64ms (View: 42, DB: 3) | 200 OK [http://localhost/yoga_classes/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#create (for 172.16.146.1 at 2010-08-24 20:28:46) [POST]
+  Parameters: {"yoga_class"=>{"instructors"=>"Ian Tagge", "name"=>"Hot Yoga One", "level"=>"Beginner", "description"=>"HOt Hot HOt", "type_of"=>"Bikram"}, "commit"=>"Create", "authenticity_token"=>"aeuowYkIVnxk3rAME3YtqTBHRn9AwH5TnR1ZQJX75SA="}
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+
+ActiveRecord::AssociationTypeMismatch (Instructor(#-617086448) expected, got String(#-608648708)):
+  app/controllers/yoga_classes_controller.rb:46:in `new'
+  app/controllers/yoga_classes_controller.rb:46:in `create'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (27.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#index (for 172.16.146.1 at 2010-08-24 20:34:33) [GET]
+  [4;36;1mYogaClass Load (0.2ms)[0m   [0;1mSELECT * FROM `yoga_classes` [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/index
+  [4;35;1mYogaClass Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mStudio Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Completed in 76ms (View: 64, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#show (for 172.16.146.1 at 2010-08-24 20:34:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mYogaClass Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mYogaClass Load (0.1ms)[0m   [0;1mSELECT * FROM `yoga_classes` WHERE (`yoga_classes`.`id` = 1) [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/show
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Completed in 26ms (View: 15, DB: 2) | 200 OK [http://localhost/yoga_classes/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#index (for 172.16.146.1 at 2010-08-24 20:41:45) [GET]
+  [4;36;1mYogaClass Load (0.2ms)[0m   [0;1mSELECT * FROM `yoga_classes` [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/index
+  [4;35;1mYogaClass Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mStudio Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Completed in 32ms (View: 19, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 172.16.146.1 at 2010-08-24 20:41:57) [GET]
+
+ActionController::RoutingError (No route matches "/classes/new" with {:method=>:get}):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#new (for 172.16.146.1 at 2010-08-24 20:42:02) [GET]
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mYogaClass Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/new
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+  [4;35;1mInstructor Load (0.1ms)[0m   [0mSELECT `instructors`.* FROM `instructors` INNER JOIN `studio_instructors` ON `instructors`.id = `studio_instructors`.instructor_id WHERE ((`studio_instructors`.studio_id = 1)) [0m
+  [4;36;1mInstructor Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+Completed in 107ms (View: 85, DB: 3) | 200 OK [http://localhost/yoga_classes/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#index (for 172.16.146.1 at 2010-08-24 21:01:51) [GET]
+  [4;36;1mYogaClass Load (0.2ms)[0m   [0;1mSELECT * FROM `yoga_classes` [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/index
+  [4;35;1mYogaClass Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;36;1mStudio Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `studios`[0m
+  [4;35;1mStudio Load (0.1ms)[0m   [0mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+
+ActionView::TemplateError (undefined method `yoga_class_path' for #<ActionView::Base:0xb64bcb78>) on line #14 of app/views/yoga_classes/index.html.erb:
+11: 
+12: <% @yoga_classes.each do |yoga_class| %>
+13:   <tr>
+14: 	<td><%= link_to (yoga_class.studio.name, yoga_class_path(yoga_class.studio_id)) %></td>
+15:     <td><%=h yoga_class.name %></td>
+16:     <td><%=h yoga_class.level %></td>
+17:     <td><%=h yoga_class.description %></td>
+
+    app/views/yoga_classes/index.html.erb:14
+    app/views/yoga_classes/index.html.erb:12:in `each'
+    app/views/yoga_classes/index.html.erb:12
+    app/controllers/yoga_classes_controller.rb:10:in `index'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (89.8ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing YogaClassesController#index (for 172.16.146.1 at 2010-08-24 21:02:19) [GET]
+  [4;35;1mYogaClass Load (0.2ms)[0m   [0mSELECT * FROM `yoga_classes` [0m
+Rendering template within layouts/yoga_classes
+Rendering yoga_classes/index
+  [4;36;1mYogaClass Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `yoga_classes`[0m
+  [4;35;1mStudio Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `studios`[0m
+  [4;36;1mStudio Load (0.1ms)[0m   [0;1mSELECT * FROM `studios` WHERE (`studios`.`id` = 1) [0m
+Completed in 29ms (View: 19, DB: 2) | 200 OK [http://localhost/classes]

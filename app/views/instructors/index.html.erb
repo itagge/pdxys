@@ -1,0 +1,15 @@
+<h1>Listing instructors</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Bio</th>
+  </tr>
+
+<% @instructors.each do |instructor| %>
+  <tr>
+    <td><%= link_to (instructor.name, instructor) %></td>
+    <td><%=h instructor.bio %></td>
+  </tr>
+<% end %>
+</table>

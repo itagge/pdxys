@@ -1,0 +1,24 @@
+<h1>Listing yoga_workshops</h1>
+
+<table>
+  <tr>
+    <th>Studio</th>
+    <th>Description</th>
+    <th>End date</th>
+    <th>Start date</th>
+    <th>Level</th>
+  </tr>
+
+<% @yoga_workshops.each do |yoga_workshop| %>
+  <tr>
+    <td><%=h yoga_workshop.studio_id %></td>
+    <td><%=h yoga_workshop.description %></td>
+    <td><%=h yoga_workshop.end_date %></td>
+    <td><%=h yoga_workshop.start_date %></td>
+    <td><%=h yoga_workshop.level %></td>
+    <td><%= link_to 'Show', yoga_workshop %></td>
+    <td><%= link_to 'Edit', edit_yoga_workshop_path(yoga_workshop) %></td>
+    <td><%= link_to 'Destroy', yoga_workshop, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,50 @@
+<p>
+  <b>Name:</b>
+  <%=h @studio.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @studio.address %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @studio.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @studio.state %>
+</p>
+
+<p>
+  <b>Zip code:</b>
+  <%=h @studio.zip_code %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @studio.description %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%=h @studio.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @studio.email %>
+</p>
+
+<h2>Classes</h2>
+<% @studio.yoga_classes.each do |yoga_class| %>
+	<ul>
+		<li><%= yoga_class.name %></li>
+		<li><%= yoga_class.type_of %></li>
+		<li><%= yoga_class.occurrences.map {|o| o.day} %></li>
+		<li><%= yoga_class.start_time %></li>
+		<li><%= yoga_class.end_time %></li>
+	</ul>
+<% end %>

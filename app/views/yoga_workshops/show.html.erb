@@ -1,0 +1,28 @@
+<p>
+  <b>Studio:</b>
+  <%=h @yoga_workshop.studio_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @yoga_workshop.description %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%=h @yoga_workshop.end_date %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%=h @yoga_workshop.start_date %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%=h @yoga_workshop.level %>
+</p>
+
+
+<%= link_to 'Edit', edit_yoga_workshop_path(@yoga_workshop) %> |
+<%= link_to 'Back', yoga_workshops_path %>
