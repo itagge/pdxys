@@ -9,13 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100825031135) do
+ActiveRecord::Schema.define(:version => 20100918183813) do
 
   create_table "instructors", :force => true do |t|
     t.string   "name"
     t.text     "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "occurrences", :force => true do |t|
@@ -45,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20100825031135) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "style"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
@@ -81,6 +84,8 @@ ActiveRecord::Schema.define(:version => 20100825031135) do
     t.datetime "updated_at"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.string   "studio"
+    t.integer  "user_id"
   end
 
   create_table "yoga_workshop_instructors", :force => true do |t|
@@ -98,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20100825031135) do
     t.string   "level"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
 end

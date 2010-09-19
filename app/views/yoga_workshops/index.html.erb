@@ -10,6 +10,8 @@
   </tr>
 
 <% @yoga_workshops.each do |yoga_workshop| %>
+<% unless yoga_workshop.end_date < @date %> <!-- show only workshops that have not yet happened -->
+<!-- eventually may want to sort workshops by retreat vs workshop and specify style? -->
   <tr>
     <td><%=h yoga_workshop.studio_id %></td>
     <td><%=h yoga_workshop.description %></td>
@@ -20,5 +22,6 @@
     <td><%= link_to 'Edit', edit_yoga_workshop_path(yoga_workshop) %></td>
     <td><%= link_to 'Destroy', yoga_workshop, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
+<% end %>
 <% end %>
 </table>

@@ -1,0 +1,85 @@
+</body>
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : chasmogamous
+Description: A two-column, fixed-width template suitable for business sites and blogs.
+Version    : 1.0
+Released   : 20080116
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>PDX YogaSource</title>
+<%= stylesheet_link_tag "style", :media => "all"%>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<!--<link href="style.css" rel="stylesheet" type="text/css" media="screen" />-->
+</head>
+<body>
+<div id="header">
+<div id="logo">
+	<h1><a href="#">PDX YogaSource</a></h1>
+	<h2>By Elliott James</h2>
+</div>
+<div id="menu">
+	<ul>
+		<li><a href="http://localhost:3000/" accesskey="1" title="">Home</a></li>
+		<li><a href="http://localhost:3000/" accesskey="2" title="">Workshops/Events</a></li>
+		<li class="first"><a href="studios.html" accesskey="3" title="">Studios</a></li>
+		<li><a href="http://localhost:3000/classes/" accesskey="4" title="">Classes</a></li>
+		<li><a href="http://localhost:3000/instructors" accesskey="5" title="">Teachers</a></li>
+		<li><a href="#" accesskey="6" title="">Contact</a></li>
+	</ul>
+	<div id="search">
+		<form method="get" action="">
+			<fieldset>
+			<input id="s" type="text" name="s" value="" />
+			<input id="x" type="submit" value="GO" />
+			</fieldset>
+		</form>
+	</div>
+</div>
+</div><hr />
+<!-- start page -->
+<div id="page">
+	<!-- start content -->
+	<div id="content">
+		<%= yield :layout %>
+	</div>
+	<!-- end content -->
+	<!-- start sidebar -->
+	<div id="sidebar">
+		<ul>
+			<li>
+				<h2>Etiam dolore</h2>
+				<p>Nulla pellentesque dolor non tellus. Duis vel elit sit <a href="#">amet ipsum vehicula</a> varius. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
+			</li>
+			<li>
+				<h2>Consequat lorem</h2>
+				<ul>
+					<li><a href="#">Proin nec magna nec massa</a></li>
+					<li><a href="#">Sit amet purus congue</a></li>
+					<li><a href="#">Molestie aliquam erat volutpat</a></li>
+					<li><a href="#">Amet ipsum vehicula varius</a></li>
+					<li><a href="#">Primis in faucibus orci luctus</a></li>
+					<li><a href="#">Vestibulum ante ipsum</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar -->
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+<div id="footer">
+	<p class="legal">Copyright (c) 2007 Website Name. All rights reserved.</p>
+	<p class="credit">Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+</div>
+</body>
+</html>

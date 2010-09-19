@@ -19,6 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :instructors
 
   map.resources :occurrences
+  
+  map.resources :account, :controller => :user_account
 
   # The priority is based upon order of creation: first created -> highest priority.
 

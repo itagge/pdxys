@@ -44,7 +44,7 @@ class InstructorsController < ApplicationController
   # POST /instructors.xml
   def create
     @instructor = Instructor.new(params[:instructor])
-    @instructor.studios << current_user.studio
+    @instructor.user << current_user
 
     respond_to do |format|
       if @instructor.save

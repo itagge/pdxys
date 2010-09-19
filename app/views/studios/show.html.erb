@@ -29,6 +29,11 @@
 </p>
 
 <p>
+	<b>Style:</b>
+	<%=h @studio.style %>
+</p>
+
+<p>
   <b>Phone:</b>
   <%=h @studio.phone %>
 </p>
@@ -37,7 +42,10 @@
   <b>Email:</b>
   <%=h @studio.email %>
 </p>
-
+<p>
+	<b>User:</b>
+	<%=h @studio.user_id %>
+</p>
 <h2>Classes</h2>
 <% @studio.yoga_classes.each do |yoga_class| %>
 	<ul>

@@ -9,16 +9,19 @@
   </p>
   <p>
     <%= f.label :level %><br />
-    <%= f.select :level, ['Beginner','Intermediate','Advanced'] %>
+    <%= f.select :level, ['Beginner','Intermediate','Advanced', 'All-Level'] %>
   </p>
   <p>
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </p>
   <p>
-    <%= f.label :yoga_type %><br />
-    <%= f.select :type_of, ['Iyengar','Bikram','Jivamukti','Kundalini','Power','Ashtanga'] %>
+    <%= f.label :style %><br />
+    <%= f.select :type_of, YogaClass::STYLES, :prompt => "Select style" %>
   </p>
+  <p>
+	<%= f.label :studio%><br />
+	<%= f.text_field :studio %>
   <p>
     <%= f.submit 'Create Class' %>
   </p>

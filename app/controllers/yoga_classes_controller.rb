@@ -1,6 +1,6 @@
 class YogaClassesController < ApplicationController
   
-  before_filter :login_required, :only => [:edit, :new, :update, :create, :destroy]
+before_filter :login_required, :only => [:edit, :new, :update, :create, :destroy]
   
   # GET /yoga_classes
   # GET /yoga_classes.xml
@@ -44,7 +44,7 @@ class YogaClassesController < ApplicationController
   # POST /yoga_classes.xml
   def create
     @yoga_class = YogaClass.new(params[:yoga_class])
-    @yoga_class.studio = current_user.studio
+    @yoga_class.user = current_user
 
     respond_to do |format|
       if @yoga_class.save

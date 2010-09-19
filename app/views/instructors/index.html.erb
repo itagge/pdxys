@@ -7,6 +7,11 @@
   </tr>
 
 <% @instructors.each do |instructor| %>
+<!-- make sure instructor fits filter specs for private classes and yoga style 
+
+
+writing all of these if statements will be tedious... can we define a method or something that will automatically check against all filter requirements? i.e., and is_valid? method that always checks against 'style' (inherit from super ? ) and then each class will have other specs (private classes, budget yoga, level, hot yoga, etc) prob would be easiest if only one filter spec allowed at a time, at least to start.... would a hash be useful here to identify the type of filter spec and its value ( style => bikram; level  => nil; neighborhood => se; ...)? -->
+
   <tr>
     <td><%= link_to (instructor.name, instructor) %></td>
     <td><%=h instructor.bio %></td>

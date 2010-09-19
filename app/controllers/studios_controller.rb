@@ -1,11 +1,13 @@
 class StudiosController < ApplicationController
   
-  before_filter :login_required, :only => [:edit, :new, :update, :create, :destroy]
+  #before_filter :login_required, :only => [:edit, :new, :update, :create, :destroy]
   
   # GET /studios
   # GET /studios.xml
   def index
-    @studios = Studio.all
+    @studios = Studio.find_studios
+    @usr = current_user
+    @usrs = User.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,13 +46,16 @@ class StudiosController < ApplicationController
   # POST /studios.xml
   def create
     @studio = Studio.new(params[:studio])
-
+    @studio.user = current_user
+    
     respond_to do |format|
       if @studio.save
         
+        #@studio.user_id = current_user.id
+        #puts current_user.id
         # add studio to user
-        current_user.studio = @studio
-        current_user.save
+        #current_user.studio = @studio
+        #current_user.save
         
         flash[:notice] = 'Studio was successfully created.'
         format.html { redirect_to(@studio) }
@@ -90,4 +95,5 @@ class StudiosController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end

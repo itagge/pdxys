@@ -24,8 +24,16 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
-
-  belongs_to :studio
+  
+  has_many  :studios,
+            :order => "name"
+  has_many  :yoga_classes,
+            :order => "created_at"
+  has_many  :yoga_workshops,
+            :order => "date"
+  has_many  :studio_instructors,
+            :order => "name"
+  has_many  :instructors, :through => :studio_instructors
 
   # Activates the user in the database.
   def activate!

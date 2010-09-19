@@ -1,0 +1,29 @@
+<h1>Listing Yoga Studios</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+	<th>Style</th>
+    <th>Description</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Phone</th>
+    <th>Email</th>
+  </tr>
+<% @studios.each do |studio| %>
+		<tr>
+			<td><%= link_to(studio.name,studio_path(studio.id)) %></td>
+			<td><%=h studio.style%></td>
+			<td><%=h studio.description %></td>
+			<td><%=h studio.address %></td>
+			<td><%=h studio.city %></td>
+			<td><%=h studio.state %></td>
+			<td><%=h studio.zip_code %></td>
+			<td><%=h studio.phone %></td>
+			<td><%=h studio.email %></td>
+			<td><%= link_to 'Show', studio %></td>
+		<tr>
+<% end %>
+</table>

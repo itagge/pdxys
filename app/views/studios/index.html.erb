@@ -1,28 +1,29 @@
-<h1>Listing Yoga Studios</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip code</th>
-    <th>Description</th>
-    <th>Phone</th>
-    <th>Email</th>
-  </tr>
-
-<% @studios.each do |studio| %>
-  <tr>
-    <td><%= link_to(studio.name,studio_path(studio.id)) %></td>
-    <td><%=h studio.address %></td>
-    <td><%=h studio.city %></td>
-    <td><%=h studio.state %></td>
-    <td><%=h studio.zip_code %></td>
-    <td><%=h studio.description %></td>
-    <td><%=h studio.phone %></td>
-    <td><%=h studio.email %></td>
-    <td><%= link_to 'Show', studio %></td>
-  </tr>
+<% if @studios.empty?%>
+	<div class="post">
+		<h2 class="title">Nothing here yet</h2>
+	</div>
+<% else %>
+	<% @studios.each do |studio| %>
+		<div class="post">
+			<h2 class="title"><a href="#"><%= link_to(studio.name,studio_path(studio.id))%> - <%=h studio.style%></a></h2>
+			<div class="entry">
+				<p><%= image_tag("img08.jpg")%>
+					<%=h studio.description %><br>
+					<h3>Style</h3>
+					<%=h studio.style %><br>
+					<h3>Address</h3>
+					<%=h studio.address %><br>
+					<%=h studio.city %><br>
+					<%=h studio.state%><br>
+					<%=h studio.zip_code%><br>
+					<h3>Contact</h3>
+					<%=h studio.phone%><br>
+					<%=h studio.email%><br> 
+					<h3>User</h3>
+					<%=h studio.user_id%><br> </p>
+			</div>
+		</div>
+	<% end %>
 <% end %>
-</table>
+	
+	

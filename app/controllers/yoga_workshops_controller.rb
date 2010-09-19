@@ -28,7 +28,7 @@ class YogaWorkshopsController < ApplicationController
   # GET /yoga_workshops/new.xml
   def new
     @yoga_workshop = YogaWorkshop.new
-    @yoga_workshop.studio = current_user.studio
+#    @yoga_workshop.studio = current_user.studio
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,6 +45,7 @@ class YogaWorkshopsController < ApplicationController
   # POST /yoga_workshops.xml
   def create
     @yoga_workshop = YogaWorkshop.new(params[:yoga_workshop])
+    @yoga_workshop.user = current_user
 
     respond_to do |format|
       if @yoga_workshop.save
